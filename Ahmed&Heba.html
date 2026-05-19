@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ahmed & Heba</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow-x:hidden;
+    color:white;
+    text-align:center;
+}
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:#fff;
+    animation:float 8s linear infinite;
+    font-size:20px;
+    opacity:.7;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-100vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:25px;
+    width:100%;
+    max-width:500px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+    animation:fadeUp 2s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.names{
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:20px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.invite{
+    font-size:1.2rem;
+    margin-bottom:30px;
+    line-height:1.8;
+}
+
+.details{
+    background:rgba(255,255,255,0.2);
+    padding:20px;
+    border-radius:20px;
+}
+
+.detail{
+    margin:15px 0;
+    font-size:1.1rem;
+}
+
+.footer{
+    margin-top:30px;
+    font-size:1rem;
+    opacity:.9;
+}
+
+.music-btn{
+    margin-top:25px;
+    padding:12px 25px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#ee9ca7;
+    font-size:1rem;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.music-btn:hover{
+    transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>💍</h1>
+
+        <div class="names">
+            Ahmed <br> & <br> Heba
+        </div>
+
+        <div class="invite">
+            You are warmly invited to celebrate our
+            <br>
+            <strong>Katb Ketab Ceremony</strong>
+        </div>
+
+        <div class="details">
+
+            <div class="detail">
+                📅 27 May 2026
+            </div>
+
+            <div class="detail">
+                ⏰ 7:00 PM
+            </div>
+
+            <div class="detail">
+                📍 At bride's home
+            </div>
+
+        </div>
+
+        <button class="music-btn" onclick="playMusic()">
+            🎵 Play Music
+        </button>
+
+        <div class="footer">
+            We will be happy to celebrate with you ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<audio id="song" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+const heartsContainer = document.querySelector('.hearts');
+
+function createHeart(){
+
+    const heart = document.createElement('div');
+
+    heart.classList.add('heart');
+
+    heart.innerHTML = '❤';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+
+    heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+
+    heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,300);
+
+function playMusic(){
+
+    const song = document.getElementById('song');
+
+    song.play();
+}
+
+</script>
+
+</body>
+</html>
